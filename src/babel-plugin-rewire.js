@@ -103,7 +103,7 @@ module.exports = function({ types: t, template }) {
 		},
 
 		ExportDefaultDeclaration: function (path, rewireInformation) {
-			if (!wasProcessed(path)) {
+			if (!wasProcessed(path) && !t.isTSDeclareFunction(path.node.declaration)) {
 				let exportIdentifier = null;
 				rewireInformation.hasES6DefaultExport = true;
 				rewireInformation.hasES6Export = true;
